@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<!--
+    Template per Video YouTube
+-->
+<html>
+    <head>
+        <title>Video - Template</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+    </head>
+    <body class="single is-preload">
+
+        <!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Header -->
+            <header id="header">
+                <h1><a href="index.html">Future Imperfect</a></h1>
+                <nav class="links">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+                <nav class="main">
+                    <ul>
+                        <li class="search">
+                            <a class="fa-search" href="#search">Search</a>
+                            <form id="search" method="get" action="#">
+                                <input type="text" name="query" placeholder="Search" />
+                            </form>
+                        </li>
+                        <li class="menu">
+                            <a class="fa-bars" href="#menu">Menu</a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+
+            <!-- Main -->
+            <div id="main">
+
+                <!-- Post -->
+                <article class="post">
+					<header>
+						<div class="title">
+							<h2>Video di YouTube</h2>
+							<p>Guarda il video e leggi la descrizione</p>
+						</div>
+					</header>
+				
+					<!-- Video -->
+					<div class="video-container">
+						<iframe width="560" height="315" src="" 
+							title="YouTube video player" frameborder="0" 
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+						</iframe>
+					</div>
+				
+					<!-- Link a YouTube -->
+					<footer>
+						<ul class="stats">
+							<li><a href="#" id="youtube-link" target="_blank">Guarda su YouTube</a></li>
+						</ul>
+					</footer>
+				</article>
+
+            </div>
+
+            <!-- Footer -->
+            <section id="footer">
+                <ul class="icons">
+                    <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                    <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                    <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+                </ul>
+                <p class="copyright">&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>. Images: <a href="http://unsplash.com">Unsplash</a>.</p>
+            </section>
+
+        </div>
+
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+
+    </body>
+</html>
+
+<script>
+    // Legge l'ID del video dalla query string
+    const urlParams = new URLSearchParams(window.location.search);
+    const videoId = urlParams.get('video_id');
+
+    // Controlla se l'ID del video è presente
+    if (videoId) {
+        // Inserisce l'ID nel link YouTube e nell'iframe
+        const iframe = document.querySelector('iframe');
+        iframe.src = `https://www.youtube.com/embed/${videoId}`;
+
+        const youtubeLink = document.querySelector('#youtube-link');
+        youtubeLink.href = `https://www.youtube.com/watch?v=${videoId}`;
+    } else {
+        // Se l'ID manca, mostra un messaggio di errore
+        document.querySelector('#main').innerHTML = '<p>Video non trovato.</p>';
+    }
+</script>
